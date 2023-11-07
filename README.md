@@ -68,6 +68,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
             InventoryItem(this.name, this.icon, this.color);
             }
         ```
+<br>
         (4) Menambahkan list yang menyimpan attribut dari item yang akan dipanggil di widget dibawah key. List ini akan membuat tiga tombol sederhana dengan ikon, teks, dan warna masing-masing.<br>
         ```
         final List<InventoryItem> items = [
@@ -76,17 +77,18 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
             InventoryItem("Logout", Icons.logout, const Color.fromARGB(255, 145,153,220)),
             ];
         ```
+<br>
         (5) Membuat class InventoryCard yang extends StatelessWidget. Class ini akan membuat widget dan memanggil item dari InventoryItem. Supaya tiap widget memiliki warna yang berbeda, dimodifikasi ```color: item.color```.
         <br>
         (6) Untuk memunculkan snackbar, pada class InventoryCard, saya menggunakan function onTap() untuk menampilkan pesan saat widget di klik.<br>
-            ```
-            onTap: () {
-                ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(SnackBar(
-                    content: Text("Kamu telah menekan tombol ${item.name}!")));
-                },
-            ```
+        ```
+        onTap: () {
+            ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(SnackBar(
+                content: Text("Kamu telah menekan tombol ${item.name}!")));
+            },
+        ```
         <br>
         (7) Saya mengisi home di ```main.dart``` dengan memanggil fungsi MyHomePage() dari ```menu.dart```.<br>        
 - [x] Melakukan add-commit-push ke GitHub.<br>
