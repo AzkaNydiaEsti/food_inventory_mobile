@@ -18,12 +18,10 @@
 Checklist untuk tugas ini adalah sebagai berikut:<br>
 <br>
 - [x] Membuat sebuah program Flutter baru dengan tema inventory seperti tugas-tugas sebelumnya.<br>
-    <br>
 - [x] Membuat tiga tombol sederhana dengan ikon dan teks untuk:<br>
     - Melihat daftar item (Lihat Item)<br>
     - Menambah item (Tambah Item)<br>
     - Logout (Logout)<br>
-    <br>
 - [x] Memunculkan Snackbar dengan tulisan:<br>
     - "Kamu telah menekan tombol Lihat Item" ketika tombol Lihat Item ditekan.<br>
     - "Kamu telah menekan tombol Tambah Item" ketika tombol Tambah Item ditekan.<br>
@@ -40,7 +38,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         - **Scaffold**: widget ini digunakan untuk menyediakan struktur visual dasar pada aplikasi, seperti untuk AppBar, Drawer, dan Snackbar.<br>
         - **AppBar**: Widget untuk menampilkan bar aplikasi di bagian atas Scaffold.<br>
         - **SingleChildScrollView**: Widget ini digunakan supaya konten dapat discroll jika kontennya lebih besar dari ruang yang ada.<br>
-        - Padding: Widget ini digunakan untuk memberikan padding disekitar widget supaya ada jarak dengan widget lain.<br>
+        - **Padding**: Widget ini digunakan untuk memberikan padding disekitar widget supaya ada jarak dengan widget lain.<br>
         - **Column**: Widget ini digunakan untuk menampilkan widget dalam tata letak vertikal.<br>
         - **GridView**: Widget ini digunakan untuk menampilkan tata letak grid sesuai jumlah kolom yang diinginkan.<br>
         - **Material**: Widget ini digunakan untuk menambahkan efek visual ke widget lain.<br>
@@ -95,7 +93,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 
 - [x] Melakukan add-commit-push ke GitHub.<br>
 <br>
-### Referensi :
+**Referensi** :
 - https://www.depotkode.com/perbedaan-stateless-dan-stateful-pada-flutter/<br>
 - https://www.geeksforgeeks.org/difference-between-stateless-and-stateful-widget-in-flutter/<br>
 
