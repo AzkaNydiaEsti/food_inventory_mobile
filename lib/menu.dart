@@ -5,8 +5,8 @@ class MyHomePage extends StatelessWidget {
     MyHomePage({Key? key}) : super(key: key);
 
     final List<InventoryItem> items = [
-    InventoryItem("Lihat Item", Icons.checklist, const Color.fromRGBO(248, 187, 208, 1)),
-    InventoryItem("Tambah Item", Icons.add_shopping_cart, const Color.fromARGB(255, 145,190,220)),
+    InventoryItem("Lihat Item", Icons.coffee, const Color.fromRGBO(248, 187, 208, 1)),
+    InventoryItem("Tambah Item", Icons.coffee_maker, const Color.fromARGB(255, 145,190,220)),
     InventoryItem("Logout", Icons.logout, const Color.fromARGB(255, 145,153,220)),
     ];
 
@@ -15,9 +15,9 @@ class MyHomePage extends StatelessWidget {
         return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Genshin Impact Inventory',
+          'Esti Coffee House',
         ),
-        backgroundColor:  const Color.fromARGB(255, 145,190,220),
+        backgroundColor:  Color.fromARGB(255, 189, 154, 122),
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
                 child: Text(
-                  'Food Inventory', // Text yang menandakan toko
+                  'COFFEE INVENTORY', // Text yang menandakan toko
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
