@@ -52,14 +52,17 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
     3.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)<br>
         (1) Pertama, saya membuat proyek flutter baru dengan nama ```food_inventory_mobile``` di folder yang ingin saya pakai menggunakan cmd.<br>
             ``` 
-            flutter create food_inventory_mobile<br>
+
+            flutter create food_inventory_mobile
             cd food_inventory_mobile
+
             ```
 
         (2) Lalu, pada folder lib didalam file proyek food_inventory_mobile, saya membuat file bernama ```menu.dart``` . Saya memindahkan semua fungsi selain main dan myApps dari main.dart ke menu.dart dan melakukan import menu.dart di main.dart.<br>
 
         (3) Mengganti MyHomePage menjadi stateless widget dan membuat class InventoryItem beserta attributnya.<br>
             ```
+
             class InventoryItem {
                 final String name;
                 final IconData icon;
@@ -72,6 +75,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 
         (4) Menambahkan list yang menyimpan attribut dari item yang akan dipanggil di widget dibawah key. List ini akan membuat tiga tombol sederhana dengan ikon, teks, dan warna masing-masing.<br>
             ```
+
             final List<InventoryItem> items = [
                 InventoryItem("Lihat Item", Icons.checklist, const Color.fromRGBO(248, 187, 208, 1)),
                 InventoryItem("Tambah Item", Icons.add_shopping_cart, const Color.fromARGB(255, 145,190,220)),
@@ -84,6 +88,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 
         (6) Untuk memunculkan snackbar, pada class ```InventoryCard```, saya menggunakan function onTap() untuk menampilkan pesan saat widget di klik.<br>
             ```
+            
             onTap: () {
                 ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
