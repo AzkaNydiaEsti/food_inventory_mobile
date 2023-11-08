@@ -35,15 +35,15 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         <br>
     2.  Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing <br>
         - **MaterialApp**: widget root ini digunakan di bagian paling atas dari widget tree untuk mengatur tema dan konfigurasi app.<br>
-        - **Scaffold**: widget ini digunakan untuk menyediakan struktur visual dasar pada aplikasi, seperti untuk AppBar, Drawer, dan Snackbar.<br>
-        - **AppBar**: Widget untuk menampilkan bar aplikasi di bagian atas Scaffold.<br>
-        - **SingleChildScrollView**: Widget ini digunakan supaya konten dapat discroll jika kontennya lebih besar dari ruang yang ada.<br>
+        - **Scaffold**: widget ini digunakan untuk mengimplementasikan visual basic pada aplikasi, seperti untuk AppBar, Drawer, dan Snackbar.<br>
+        - **AppBar**: Widget yang menampilkan bar aplikasi di bagian atas layar.<br>
+        - **SingleChildScrollView**: Widget ini digunakan supaya konten dapat discroll saat kontennya lebih besar dari tempat yang ada.<br>
+        - **GridView**: Widget ini digunakan untuk menampilkan grid sesuai jumlah baris dan kolom yang diinginkan.<br>
+        - **Material**: Widget ini digunakan untuk menambahkan efek visual ke widget lain.<br>
+        - **InkWell**: Widget ini digunakan untuk membuat area yang responsif terhadap sentuhan.<br>
+        - **Container**: Widget ini digunakan untuk mengatur beberapa widget yang ada didalamnya menjadi satu.<br>
         - **Padding**: Widget ini digunakan untuk memberikan padding disekitar widget supaya ada jarak dengan widget lain.<br>
         - **Column**: Widget ini digunakan untuk menampilkan widget dalam tata letak vertikal.<br>
-        - **GridView**: Widget ini digunakan untuk menampilkan tata letak grid sesuai jumlah kolom yang diinginkan.<br>
-        - **Material**: Widget ini digunakan untuk menambahkan efek visual ke widget lain.<br>
-        - **InkWell**: Widget ini digunakan untuk membuat area yang responsife terhadap sentuhan.<br>
-        - **Container**: Widget ini digunakan untuk mengatur beberapa widget yang ada didalamnya menjadi satu.<br>
         - **Center**: Widget ini digunakan untuk mengatur lokasi menjadi ditengah.<br>
         - **Icon**: Widget ini digunakan untuk menampilkan ikon.<br>
         - **Text**: Widget ini digunakan untuk menampilkan teks.<br>
@@ -55,7 +55,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
             cd food_inventory_mobile
 
 
-        (2) Lalu, pada folder lib didalam file proyek ```food_inventory_mobile```, saya membuat file bernama ```menu.dart``` . Saya memindahkan semua fungsi selain main dan myApps dari ```main.dart``` ke ```menu.dart``` dan melakukan import ```menu.dart``` di ```main.dart``` .<br>
+        (2) Lalu, pada folder lib didalam file proyek ```food_inventory_mobile```, saya membuat file bernama ```menu.dart``` . Saya memindahkan semua fungsi selain main dan myApps dari ```main.dart``` ke ```menu.dart``` dan melakukan import ```menu.dart``` di ```main.dart``` supaya ```MyHomePage()``` dapat diakses di main.<br>
 
         (3) Mengganti ```MyHomePage``` menjadi stateless widget dan membuat ```class InventoryItem``` beserta attributnya.<br>
 
@@ -79,7 +79,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         
         (5) Membuat ```class InventoryCard yang extends StatelessWidget```. Class ini akan membuat widget dan memanggil item dari InventoryItem. Supaya tiap widget memiliki warna yang berbeda, dimodifikasi ```color: item.color``` .
 
-        (6) Untuk memunculkan snackbar, pada class ```InventoryCard```, saya menggunakan function onTap() untuk menampilkan pesan saat widget di klik.<br>
+        (6) Untuk memunculkan meesage saat widget di klik. Pada class ```InventoryCard```, saya menggunakan function ```onTap()``` untuk menampilkan pesan/snackbar saat widget di klik.<br>
             
             onTap: () {
                 ScaffoldMessenger.of(context)
@@ -89,7 +89,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
                 },
 
 
-        (7) Saya mengisi home di main.dart dengan memanggil fungsi MyHomePage() dari menu.dart.<br>  
+        (7) Saya mengisi home di main.dart dengan memanggil fungsi ```MyHomePage()``` dari ```menu.dart```.<br>  
 
 - [x] Melakukan add-commit-push ke GitHub.<br>
 <br>
