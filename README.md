@@ -14,6 +14,7 @@
 ---
 
 # Tugas 7 Checklist
+
 Checklist untuk tugas ini adalah sebagai berikut:<br>
 <br>
 - [x] Membuat sebuah program Flutter baru dengan tema inventory seperti tugas-tugas sebelumnya.<br>
@@ -58,7 +59,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 
         (2) Lalu, pada folder lib didalam file proyek ```food_inventory_mobile```, saya membuat file bernama ```menu.dart``` . Saya memindahkan semua fungsi selain main dan myApps dari ```main.dart``` ke ```menu.dart``` dan melakukan import ```menu.dart``` di ```main.dart``` .<br>
 
-        (3) Mengganti MyHomePage menjadi stateless widget dan membuat class InventoryItem beserta attributnya.<br>
+        (3) Mengganti ```MyHomePage``` menjadi stateless widget dan membuat ```class InventoryItem``` beserta attributnya.<br>
 
             class InventoryItem {
                 final String name;
@@ -94,6 +95,8 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 
 - [x] Melakukan add-commit-push ke GitHub.<br>
 <br>
-**Referensi** :<br>
+### Referensi :
 - https://www.depotkode.com/perbedaan-stateless-dan-stateful-pada-flutter/<br>
 - https://www.geeksforgeeks.org/difference-between-stateless-and-stateful-widget-in-flutter/<br>
+
+---
