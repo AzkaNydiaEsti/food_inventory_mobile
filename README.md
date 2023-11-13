@@ -10,6 +10,7 @@
 # Direktori
 
 - [Tugas 7](#tugas-7-checklist)
+- [Tugas 8](#tugas-8-checklist)
 
 ---
 
@@ -98,3 +99,231 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 - https://www.geeksforgeeks.org/difference-between-stateless-and-stateful-widget-in-flutter/<br>
 
 ---
+
+# Tugas 8 Checklist
+
+- [x] Membuat minimal satu halaman baru pada aplikasi, yaitu halaman formulir tambah item baru dengan ketentuan sebagai berikut:<br>
+    - Memakai minimal tiga elemen input, yaitu name, amount, description. Tambahkan elemen input sesuai dengan model pada aplikasi tugas Django yang telah kamu buat.<br>
+    - Memiliki sebuah tombol Save.<br>
+    - Setiap elemen input di formulir juga harus divalidasi dengan ketentuan sebagai berikut:
+        - Setiap elemen input tidak boleh kosong.
+        - Setiap elemen input harus berisi data dengan tipe data atribut modelnya.<br>
+- [x] Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol Tambah Item pada halaman utama.<br>
+- [x] Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman formulir tambah item baru.<br>
+- [x] Membuat sebuah drawer pada aplikasi dengan ketentuan sebagai berikut:<br>
+    - Drawer minimal memiliki dua buah opsi, yaitu Halaman Utama dan Tambah Item.<br>
+    - Ketika memiih opsi Halaman Utama, maka aplikasi akan mengarahkan pengguna ke halaman utama.<br>
+    - Ketika memiih opsi (Tambah Item), maka aplikasi akan mengarahkan pengguna ke halaman form tambah item baru.<br>
+- [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).<br>
+    1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!<br>
+        **Navigator.push()** : menambahkan suatu rute ke dalam stack rute paling atas sehingga halaman baru akan ditampilkan diatas halaman sebelumnya. Contohnya, saat sedang berada di Halaman A dan dilakukan Navigator.push() ke halamanan B, maka Halaman akan berganti ke Halaman B tetapi dapat kembali ke Halaman A dengan menekan tombol back.
+
+        **Navigator.pushReplacement()** : Menghapus rute yang sedang ditampilkan dari paling atas stack rute dan digantikan dengan rute baru sehingga tampilan halaman akan berubah menjadi halaman dari rute paling atas terbaru. Contohnya, saat sedang berada di Halaman A dan dilakukan Navigator.pushReplacement() ke halamanan B, maka Halaman akan berganti ke Halaman B dan Halaman A tidak dapat diakses kembali jika ditekan tombol back.
+        <br>
+    2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!<br>
+        - **Container** : Widget ini digunakan untuk mengatur tata letak dan dekorasi widget lain
+        - **Padding**: Widget ini akan memberikan jarak antara children widget tersebut dan widget lain.
+        - **Center** : Widget ini membuat widget letaknya di tengah.
+        - **SingleChildScrollView** : Widget ini dipakai supaya child widget jadi scrollable.
+        - **Column** : Widget ini digunakan untuk menampilkan widget children dalam tata letak vertikal.
+        - **Align** : widget ini digunakan untuk menyelaraskan children dengan dirinya sendiri.
+
+        <br>
+    3. Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!<br>
+        - **TextFormField**: Saya menggunakan elemen ini untuk meminta input teks dari pengguna.
+        <br>
+    4. Bagaimana penerapan clean architecture pada aplikasi Flutter?<br>
+        **Clean Architecture pada Flutter** adalah arsitektur yang menggunakan design principle separation of concern dan fokus dalam memisahkan software dalam layer terpisah supaya layer tersebut dapat dijalankan secara independent dan bagiannya dapat digunakan ulang untuk kode lain. Pemisahan kode dilakukan antara Feature layer (UI dan Event handler), Inner layer (Entities, Use Cases & Repository Interfaces), dan data layer(repository dan data source). Hal ini akan membuat kode menjadi lebih mudah diuji (testable), dapat dipelihara (maintainable), dan dapat ditingkatkan (scalable). <br>
+        <br>
+    5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)<br>
+        1. Pertama, saya membuat file bernama ```shoplist_form.dart``` dan membuat _formKey sebagai key dalam menghandle form.
+
+                class ShopFormPage extends StatefulWidget {
+                    const ShopFormPage({super.key});
+
+                    @override
+                    State<ShopFormPage> createState() => _ShopFormPageState();
+                }
+
+                class _ShopFormPageState extends State<ShopFormPage> {
+                    final _formKey = GlobalKey<FormState>();
+                }
+
+
+        2. Lalu, saya membuat 4 variabel sesuai dengan kebutuhan input aplikasi saya.
+
+                String _name = "";
+                int _amount = 0;
+                String _sugarlevel = "";
+                String _description = "";
+
+
+        3. Setelah itu, saya TextFormField dan column untuk mengatur laman input item dalam aplikasi. Terdapat juga validasi jika input kosong dan validasi integer positif untuk input integer.
+                
+                Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Nama Item",
+                        labelText: "Nama Item",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _name = value!;
+                        });
+                      },
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Nama tidak boleh kosong!";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                
+            Diatas adalah potongan kode untuk input nama item, ketiga variabel lain menggunakan kode yang sama, tetapi terdapat validasi tambahan untuk variabel amount.
+
+                //Validasi untuk amount
+                validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Jumlah tidak boleh kosong!";
+                      }
+                      if (int.tryParse(value) == null) {
+                        return "Jumlah harus berupa angka!";
+                      }
+                      return null;
+                    },
+                
+
+        4. Supaya halaman form tambah input muncul ketika diklik tombol tambah item, maka saya menambahkan ```Navigator.push()``` pada atribut onTap() di file ```menu.dart```.
+
+                if (item.name == "Tambah Item") {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ShopFormPage(),
+                    ));
+                }
+            
+        5. Saya menambahkan tombol fungsi ```showDialog()``` pada bagian ```onPressed``` supaya popup yang berisi input yang telah dimasukkan muncul ketika tombol save di klik.
+
+                onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                        showDialog(
+                        context: context,
+                        builder: (context) {
+                            return AlertDialog(
+                            title: const Text('Item berhasil tersimpan'),
+                            content: SingleChildScrollView(
+                                child: Column(
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                children: [
+                                    Text('Nama: $_name'),
+                                    Text('Jumlah: $_amount'),
+                                    Text('Level Gula: $_sugarlevel'),
+                                    Text('Deskripsi: $_description'),
+                                ],
+                                ),
+                            ),
+                            actions: [
+                                TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                    Navigator.pop(context);
+                                },
+                                ),
+                            ],
+                            );
+                        },
+                        );
+                    _formKey.currentState!.reset();
+                    }
+                    }, 
+
+
+        6. Untuk membuat drawer, saya membuat file baru dengan nama ```left_drawer.dart```. Lalu, saya mengimport file dart lain, dan menggunakan ```listTile``` untuk merouting ke halaman yang sudah di import. Saya juga menyesuaikan icon dari tiap laman dengan halaman utama.
+
+                import 'package:flutter/material.dart';
+                import 'package:food_inventory_mobile/menu.dart';
+                import 'package:food_inventory_mobile/shoplist_form.dart';
+
+                ...
+
+                ListTile(
+                    leading: const Icon(Icons.house),
+                    title: const Text('Halaman Utama'),
+                    // Bagian redirection ke MyHomePage
+                    onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MyHomePage(),
+                        ));
+                    },
+                ),
+                ListTile(
+                    leading: const Icon(Icons.coffee_maker),
+                    title: const Text('Tambah Item'),
+                    // Bagian redirection ke ShopFormPage
+                    onTap: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ShopFormPage(),
+                    ));
+                    },
+                ),
+            
+
+        7. Setelah itu, saya menghias drawer dengan menyesuaikan warna pada navigator dengan halaman utama.
+
+                const DrawerHeader(
+                    decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 189, 154, 122),
+                    ),
+                    child: Column(
+                    children: [
+                        Text(
+                        'Inventory Navigator',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                        ),
+                        ),
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text("Search what you need here!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w600
+                            ),
+                        ),
+                    ],
+                    ),
+                ),
+
+        8. Supaya dapat dilihat di halaman utama, saya menambahkan import file tersebut didalam main.dart dan memasukan LeftDrawe() kedalam drawer diatas home.
+
+                drawer: const LeftDrawer(),
+        
+        9. Saya membuat file baru lagi bernama ```shop_card.dart``` yang berisi semua isi widget ```InventoryItem``` dari menu.dart.
+
+        10. Untuk mempermudah menavigasi file, saya membuat 2 folder, ```widgets``` dan ```screens```, dan saya mengalokasikan semua file dart selain main kedalam folder tersebut sehingga saat mengimport file, akan terlihat seperti kode dibawah.
+
+                import 'package:food_inventory_mobile/widgets/shop_card.dart';
+                import 'package:food_inventory_mobile/widgets/left_drawer.dart';
+                import 'package:food_inventory_mobile/screens/menu.dart';
+                import 'package:food_inventory_mobile/screens/shoplist_form.dart';
+        <br>
+- [x] Melakukan add-commit-push ke GitHub.<br>
+
+<br>
+Referensi : <br>
+- https://medium.com/ruangguru/an-introduction-to-flutter-clean-architecture-ae00154001b0
