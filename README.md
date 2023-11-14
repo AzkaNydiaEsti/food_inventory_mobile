@@ -346,7 +346,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 
                 drawer: const LeftDrawer(),
         
-        9. Saya membuat file baru lagi bernama ```shop_card.dart``` yang berisi semua isi widget ```InventoryItem``` dari menu.dart.
+        9. Saya membuat file baru lagi bernama ```shop_card.dart``` yang berisi semua isi widget ```InventoryItem``` yang dipindahkan dari menu.dart.
 
         10. Untuk mempermudah menavigasi file, saya membuat 2 folder, ```widgets``` dan ```screens```, dan saya mengalokasikan semua file dart selain main kedalam folder tersebut sehingga saat mengimport file, akan terlihat seperti kode dibawah.
 
@@ -355,7 +355,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
                 import 'package:food_inventory_mobile/screens/menu.dart';
                 import 'package:food_inventory_mobile/screens/shoplist_form.dart';
         
-        11. Saya membuat folder dan file baru yang akan menyimpan models dari item yang akan dimasukkan dalam form. 
+        11. Saya membuat folder dan file baru yang akan menyimpan models dari item yang akan dimasukkan dalam form bernama ```item_model.dart```. 
 
                 class Item {
                     final String name;
@@ -367,9 +367,9 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
                     }
             
         
-        12. Lalu, saya membuat file baru bernama ```coffee_page.dart``` dan pada file ini, saya menyimpan dan menampilkan input yang sudah disave menggunakan list.
+        12. Lalu, saya membuat file baru bernama ```coffee_page.dart``` didalam folder screens dan pada file ini, saya menyimpan dan menampilkan input yang sudah disave menggunakan class ```coffeeListPage```.
 
-        13. Setelah itu, saya melakukan navigation.push() pada drawer dan shop_card supaya page dapat terlihat saat button/laman lihat item diklik.
+        13. Setelah itu, saya import file tersebut didalam file pada folder widgets dan melakukan navigation.push() pada drawer dan shop_card supaya page dapat terlihat saat button/laman lihat item diklik.
 
                 Navigator.push(
                   context,
