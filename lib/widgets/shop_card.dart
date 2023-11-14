@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_inventory_mobile/screens/shoplist_form.dart';
+import 'package:food_inventory_mobile/screens/coffee_form.dart';
+import 'package:food_inventory_mobile/screens/coffee_page.dart';
+import 'package:food_inventory_mobile/widgets/left_drawer.dart';
 
 class InventoryItem {
   final String name;
@@ -33,6 +35,13 @@ class InventoryCard extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => const ShopFormPage(),
               ));
+          }
+          else if (item.name == "Lihat Item") {
+             Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CoffeeListPage(items: items),
+                  ));
           }
         },
         child: Container(

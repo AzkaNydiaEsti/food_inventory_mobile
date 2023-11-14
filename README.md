@@ -118,19 +118,52 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
     1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!<br>
         **Navigator.push()** : menambahkan suatu rute ke dalam stack rute paling atas sehingga halaman baru akan ditampilkan diatas halaman sebelumnya. Contohnya, saat sedang berada di Halaman A dan dilakukan Navigator.push() ke halamanan B, maka Halaman akan berganti ke Halaman B tetapi dapat kembali ke Halaman A dengan menekan tombol back.
 
+                ListTile(
+                    leading: const Icon(Icons.coffee_maker),
+                    title: const Text('Tambah Item'),
+                    // Bagian redirection ke ShopFormPage
+                    onTap: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ShopFormPage(),
+                    ));
+                    },
+                ),
+
         **Navigator.pushReplacement()** : Menghapus rute yang sedang ditampilkan dari paling atas stack rute dan digantikan dengan rute baru sehingga tampilan halaman akan berubah menjadi halaman dari rute paling atas terbaru. Contohnya, saat sedang berada di Halaman A dan dilakukan Navigator.pushReplacement() ke halamanan B, maka Halaman akan berganti ke Halaman B dan Halaman A tidak dapat diakses kembali jika ditekan tombol back.
+
+                ListTile(
+                    leading: const Icon(Icons.house),
+                    title: const Text('Halaman Utama'),
+                    // Bagian redirection ke MyHomePage
+                    onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MyHomePage(),
+                        ));
+                    },
+                ),
+
         <br>
     2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!<br>
         - **Container** : Widget ini digunakan untuk mengatur tata letak dan dekorasi widget lain
-        - **Padding**: Widget ini akan memberikan jarak antara children widget tersebut dan widget lain.
+        - **Padding**: Widget ini digunakan untuk memberikan padding disekitar widget supaya ada jarak dengan widget lain.
         - **Center** : Widget ini membuat widget letaknya di tengah.
-        - **SingleChildScrollView** : Widget ini dipakai supaya child widget jadi scrollable.
+        - **SingleChildScrollView** : Widget ini digunakan supaya konten dapat discroll saat kontennya lebih besar dari tempat yang ada.
+        - **ListView** : Widget ini digunakan untuk membuat list dari child widget dan ingin menampilkannya semuanya pada screen.
+        - **Stack** : Widget ini digunakan untuk menempatkan child widget di atas satu sama lain dan menampilkan widget yang berada pada stack paling atas.
         - **Column** : Widget ini digunakan untuk menampilkan widget children dalam tata letak vertikal.
         - **Align** : widget ini digunakan untuk menyelaraskan children dengan dirinya sendiri.
 
         <br>
     3. Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!<br>
         - **TextFormField**: Saya menggunakan elemen ini untuk meminta input teks dari pengguna.
+        - **ElevatedButton** : Saya menggunakan elemen ini untuk mengirim / simpan form.
+        - **AlertDialog** : Saya menggunakan elemen ini untuk menampilakn input teks dari pengguna setelah klik button save.
+
+        Saya menggunakan elemen tersebut untuk mengambil input terhadap variabel nama item, jumlah, level gula, dan deskripsi menggunakan TextFormField. Sedangkan, ElevatedButton dan AlertDialog dipakai setelah pengguna memasukkan input dan klik save.
         <br>
     4. Bagaimana penerapan clean architecture pada aplikasi Flutter?<br>
         **Clean Architecture pada Flutter** adalah arsitektur yang menggunakan design principle separation of concern dan fokus dalam memisahkan software dalam layer terpisah supaya layer tersebut dapat dijalankan secara independent dan bagiannya dapat digunakan ulang untuk kode lain. Pemisahan kode dilakukan antara Feature layer (UI dan Event handler), Inner layer (Entities, Use Cases & Repository Interfaces), dan data layer(repository dan data source). Hal ini akan membuat kode menjadi lebih mudah diuji (testable), dapat dipelihara (maintainable), dan dapat ditingkatkan (scalable). <br>
@@ -321,6 +354,29 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
                 import 'package:food_inventory_mobile/widgets/left_drawer.dart';
                 import 'package:food_inventory_mobile/screens/menu.dart';
                 import 'package:food_inventory_mobile/screens/shoplist_form.dart';
+        
+        11. Saya membuat folder dan file baru yang akan menyimpan models dari item yang akan dimasukkan dalam form. 
+
+                class Item {
+                    final String name;
+                    final int amount;
+                    final String sugarLevel;
+                    final String description;
+
+                    Item({required this.name, required this.amount, required this.sugarLevel, required this.description});
+                    }
+            
+        
+        12. Lalu, saya membuat file baru bernama ```coffee_page.dart``` dan pada file ini, saya menyimpan dan menampilkan input yang sudah disave menggunakan list.
+
+        13. Setelah itu, saya melakukan navigation.push() pada drawer dan shop_card supaya page dapat terlihat saat button/laman lihat item diklik.
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CoffeeListPage(items: items),
+                  ));
+                  
         <br>
 - [x] Melakukan add-commit-push ke GitHub.<br>
 
