@@ -170,9 +170,9 @@ Widget build(BuildContext context) {
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              Text("${snapshot.data![index].fields.amount}"),
+                              Text("Jumlah     : ${snapshot.data![index].fields.amount}"),
                               const SizedBox(height: 10),
-                              Text("${snapshot.data![index].fields.description}")
+                              Text("Deskripsi  : ${snapshot.data![index].fields.description}")
                             ],
                           ),
                         ),

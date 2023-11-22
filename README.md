@@ -413,14 +413,38 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
     3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
         Pada tugas ini, saya menggunakan website quicktype untuk membuat data JSO dari endpoint /json pada tugas django. Lalu, saya menambahkan dependensi http pada flutter dan memberi permision pada file xml di main folder android supaya dapat mengakses internet. 
         ``` <uses-permission android:name="android.permission.INTERNET" /> ```
-        Setelah itu, saya melakukan fetch data dar
+
+        Setelah itu, saya melakukan fetch data didalam file yang akan menampilkan daftar item yang telah disimpan. Untuk menampilkan data yang diambil, saya menggunakan FutureBuilder dan snapshot.data digunakan untuk menampilkan variabel data yang diambil pada ListView.builder.
         <br>
     
     4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
-
+        Penggguna memasukkan data akun berupa username dan password laman LoginPage. Saat tombol login ditekan, maka fungsi login pada CookieRequest akan mengirim HTTP request dan akan dicek apa user ada atau sudah login. Jika request berhasil, maka akan diarahkan ke Homepage().
     
     5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+        1. TextField : dipakai supaya pengguna dapat memasukkan teks. -> digunakan untuk login page.	
+        2. Column : dipakai untuk menata komponen secara vertikal. -> digunakan untuk menata info pada item.
+        3. SizedBox : dipakai untuk	menambahkan jarak dengan informasi lain secara vertikal.
+        4. FutureBuilder : dipakai untuk membuat widget secara asinkron.
+        5. ListView.builder	: dipakai untuk membuat halaman yang dapat di scroll. -> digunakan pada daftar item.
+        <br>
     
     6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+        1. Pertana, saya membuat django app baru bernama authentication dan menginstall library. Lalu, saya membuat fungsi login pada views.py di authentication untuk handle login dan mengubah urls.py dan setting.py di main supaya authentication terkonek. Saya juga membuat fungsi logout di views.py yang akan digunakan untuk melakukan logout pada flutter dan menambah pathnya di urls.py.
+
+        2. Saya menginstall pbp_django_auth dan provider untuk mengatur cookie dan memodifikasi root widget untuk menyediakan instance CookieRequestdengan semua komponen pada proyek di dalam file main.dart.
+
+        3. Lalu, saya membuat file baru di screens bernama login.dart. File ini berisi fungsi LoginPage yang akan mengatur autentikasi user dan meminta username dan password. Pada main.dart(), home juga saya ubah menjadi LoginPage() supaya yang pertama muncul saat flutter dijalankan adalah laman login.
+
+        4. Selanjutnya saya membuat model kustom menggunakan website Quicktype. Saya mengambil data JSON dari aplikasi django yang telah dibuat sebelumnya dengan endpoint /json. Data itu saya masukkan kedalam Quicktype dan saya ubah setup name menjadi Item dan language menjadi dart. 
+
+        5. Saya membuat file item.dart yang menyimpan model. Model yang didapatkan dari Quicktype saya masukkan ke dalam file tersebut.
+
+        6. Untuk menampilkan Daftar Item pada flutter, saya membuat file baru bernama list_item.dart. Pada file ini saya melakukan fetch data menggunakan FutureBuilder dan memakai snapshot.data untuk mengecek apakah ada datanya. Jika ada, maka saya menggunakana ListView.builder untuk menamoilkan data yang tekah diambil.
+
+        7. Lalu, saya membuat item_detail.dart dengan function DetailItemPage() yang akan menunjukkan semua variabel dari object yang sedang di klik di daftar Item. Pada item_detail.dart, saya ubah itemBuilder menjadi inkwell dan membuat fungsi onTap() supaya jika Item di klik, maka akan akan mengarah ke DetailItemPage() dengan snapshot.data sesuai index dari item yang di klik. Diatasnya, terdapat panah yang akan mengarah balik ke daftar Item jika di klik.
+
+        8. Supaya item_list.dart dapat diakses, saya mengubah rute menjadi ke ProductPage() pada onTap() di ListTile Daftar Item di file left_drawer.dart. Pada HomePage(), saya juga menambahkan conditional jika Lihat Item di klik, maka akan mengarah ke rute ProductPage().
+
+        9. Pada flutter Homepage(), saya juga menambahkan ```final request = context.watch<CookieRequest>();``` dan menambahkan if else yang akan melakukan logout jika di klik card logout.
     
 - [x] Melakukan add-commit-push ke GitHub.
