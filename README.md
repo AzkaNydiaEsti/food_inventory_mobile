@@ -401,6 +401,7 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
     - [x] Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
     - [x] Tampilkan seluruh atribut pada model item kamu pada halaman ini.
     - [x] Tambahkan tombol untuk kembali ke halaman daftar item.
+    <br>
 
 - [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
     1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
@@ -415,11 +416,12 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         Pada tugas ini, saya menggunakan website quicktype untuk membuat data JSO dari endpoint /json pada tugas django. Lalu, saya menambahkan dependensi http pada flutter dan memberi permision pada file xml di main folder android supaya dapat mengakses internet. 
         ``` <uses-permission android:name="android.permission.INTERNET" /> ```
 
-        Setelah itu, saya melakukan fetch data didalam file yang akan menampilkan daftar item yang telah disimpan. Untuk menampilkan data yang diambil, saya menggunakan FutureBuilder dan snapshot.data digunakan untuk menampilkan variabel data yang diambil pada ListView.builder.
+        Setelah itu, saya melakukan fetch data didalam file yang akan menampilkan daftar item yang telah disimpan. Untuk menampilkan data yang diambil, saya menggunakan FutureBuilder dan snapshot.data digunakan untuk menampilkan variabel data yang dipakai pada ListView.builder.
         <br>
     
     4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
-        Penggguna memasukkan data akun berupa username dan password laman LoginPage. Saat tombol login ditekan, maka fungsi login pada CookieRequest akan mengirim HTTP request dan akan dicek apa user ada atau sudah login. Jika request berhasil, maka akan diarahkan ke Homepage().
+        Penggguna memasukkan data akun berupa username dan password laman LoginPage. Saat tombol login ditekan, maka fungsi login pada CookieRequest akan mengirim HTTP request dan akan dicek apa user ada atau sudah login menggunakan ```user = authenticate(username=username, password=password)```. Jika request berhasil, maka akan diarahkan ke Homepage().
+        <br>
     
     5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
         1. TextField : dipakai supaya pengguna dapat memasukkan teks. -> digunakan untuk login page.	
@@ -427,6 +429,8 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         3. SizedBox : dipakai untuk	menambahkan jarak dengan informasi lain secara vertikal.
         4. FutureBuilder : dipakai untuk membuat widget secara asinkron.
         5. ListView.builder	: dipakai untuk membuat halaman yang dapat di scroll. -> digunakan pada daftar item.
+        6. Padding : dipakai untuk memberikan insets berdasarkan padding yang diberikan.
+        7. AppBar : dipakai sebagai container untuk menampilkan konten dan actions di bagian atas layar.
         <br>
     
     6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
