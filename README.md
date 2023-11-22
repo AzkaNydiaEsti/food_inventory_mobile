@@ -401,13 +401,14 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
     - [x] Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
     - [x] Tampilkan seluruh atribut pada model item kamu pada halaman ini.
     - [x] Tambahkan tombol untuk kembali ke halaman daftar item.
+
 - [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
     1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
         Bisa, kita dapat mengakalinya dengan menggunakan sebuah variabel yang menyimpan sebuah dictionary berisi data. Tetapi, hal tersebut akan mempersulit kita dibandingkan menggunakan model yang dapat membantu memastikan suatu objek memiliki semua nilai atribut pada kelas di model.
         <br>
 
     2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
-        CookieRequest dipakai untuk membantu aplikasi menyimpan sesi secara lokal dan melakukan request HTTP. Pengunaannya pada flutter adalah supaya perubahan status login/sesi yang terjadi menjadi konsisten di semua aplikasi.
+        CookieRequest dipakai untuk membantu aplikasi menyimpan sesi secara lokal, preferensi pengguna, dan melakukan request HTTP. Pengunaannya pada flutter adalah supaya perubahan status login/sesi yang terjadi menjadi konsisten di semua aplikasi.
         <br>
 
     3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
@@ -429,22 +430,23 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
         <br>
     
     6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
-        1. Pertana, saya membuat django app baru bernama authentication dan menginstall library. Lalu, saya membuat fungsi login pada views.py di authentication untuk handle login dan mengubah urls.py dan setting.py di main supaya authentication terkonek. Saya juga membuat fungsi logout di views.py yang akan digunakan untuk melakukan logout pada flutter dan menambah pathnya di urls.py.
+        1. Pertana, saya membuat django app baru bernama authentication dan menginstall library. Lalu, saya membuat fungsi login pada views.py di authentication untuk handle login dan mengubah ```urls.py``` dan ```setting.py``` di main supaya authentication terkonek. Saya juga membuat fungsi **logout** di ```views.py``` yang akan digunakan untuk melakukan logout pada flutter dan menambah pathnya di ```urls.py```.
 
-        2. Saya menginstall pbp_django_auth dan provider untuk mengatur cookie dan memodifikasi root widget untuk menyediakan instance CookieRequestdengan semua komponen pada proyek di dalam file main.dart.
+        2. Saya menginstall pbp_django_auth dan provider untuk mengatur cookie dan memodifikasi root widget untuk menyediakan instance CookieRequestdengan semua komponen pada proyek di dalam file ```main.dart```.
 
-        3. Lalu, saya membuat file baru di screens bernama login.dart. File ini berisi fungsi LoginPage yang akan mengatur autentikasi user dan meminta username dan password. Pada main.dart(), home juga saya ubah menjadi LoginPage() supaya yang pertama muncul saat flutter dijalankan adalah laman login.
+        3. Lalu, saya membuat file baru di screens bernama ```login.dart```. File ini berisi fungsi LoginPage yang akan mengatur autentikasi user dan meminta username dan password. Pada main.dart(), home juga saya ubah menjadi LoginPage() supaya yang pertama muncul saat flutter dijalankan adalah laman login.
 
-        4. Selanjutnya saya membuat model kustom menggunakan website Quicktype. Saya mengambil data JSON dari aplikasi django yang telah dibuat sebelumnya dengan endpoint /json. Data itu saya masukkan kedalam Quicktype dan saya ubah setup name menjadi Item dan language menjadi dart. 
+        4. Selanjutnya saya membuat model kustom menggunakan website **Quicktype**. Saya mengambil data JSON dari aplikasi django yang telah dibuat sebelumnya dengan endpoint ```/json```. Data itu saya masukkan kedalam Quicktype dan saya ubah setup name menjadi Item dan language menjadi dart. 
 
-        5. Saya membuat file item.dart yang menyimpan model. Model yang didapatkan dari Quicktype saya masukkan ke dalam file tersebut.
+        5. Saya membuat file ```item.dart``` yang akan menyimpan model. Model yang didapatkan dari Quicktype saya masukkan ke dalam file tersebut.
 
-        6. Untuk menampilkan Daftar Item pada flutter, saya membuat file baru bernama list_item.dart. Pada file ini saya melakukan fetch data menggunakan FutureBuilder dan memakai snapshot.data untuk mengecek apakah ada datanya. Jika ada, maka saya menggunakana ListView.builder untuk menamoilkan data yang tekah diambil.
+        6. Untuk menampilkan Daftar Item pada flutter, saya membuat file baru bernama ```list_item.dart```. Pada file ini saya melakukan fetch data menggunakan FutureBuilder dan memakai snapshot.data untuk mengecek apakah ada datanya. Jika ada, maka saya menggunakana ListView.builder untuk menampilkan data yang telah diambil. (selengkseperti yang ada di no.3)
 
-        7. Lalu, saya membuat item_detail.dart dengan function DetailItemPage() yang akan menunjukkan semua variabel dari object yang sedang di klik di daftar Item. Pada item_detail.dart, saya ubah itemBuilder menjadi inkwell dan membuat fungsi onTap() supaya jika Item di klik, maka akan akan mengarah ke DetailItemPage() dengan snapshot.data sesuai index dari item yang di klik. Diatasnya, terdapat panah yang akan mengarah balik ke daftar Item jika di klik.
+        7. Lalu, saya membuat ```item_detail.dart``` dengan function DetailItemPage() yang akan menunjukkan semua variabel dari object yang sedang di klik di daftar Item. Pada item_detail.dart, saya ubah itemBuilder menjadi inkwell dan membuat fungsi onTap() supaya jika Item di klik, maka akan akan mengarah ke DetailItemPage() dengan snapshot.data sesuai index dari item yang di klik. Diatasnya, terdapat panah yang akan mengarah balik ke daftar Item jika di klik.
 
-        8. Supaya item_list.dart dapat diakses, saya mengubah rute menjadi ke ProductPage() pada onTap() di ListTile Daftar Item di file left_drawer.dart. Pada HomePage(), saya juga menambahkan conditional jika Lihat Item di klik, maka akan mengarah ke rute ProductPage().
+        8. Supaya item_list.dart dapat diakses, saya mengubah rute menjadi ke ProductPage() pada onTap() di ListTile Daftar Item di file ```left_drawer.dart```. Pada  ```shop_card.dart```, saya juga menambahkan conditional jika Lihat Item di klik, maka akan mengarah ke rute ProductPage().
 
-        9. Pada flutter Homepage(), saya juga menambahkan ```final request = context.watch<CookieRequest>();``` dan menambahkan if else yang akan melakukan logout jika di klik card logout.
-    
+        9. Pada ```shop_card.dart```, saya juga menambahkan ```final request = context.watch<CookieRequest>();``` dan menambahkan if else yang akan melakukan logout jika di klik card logout.
+        <br>
+
 - [x] Melakukan add-commit-push ke GitHub.
