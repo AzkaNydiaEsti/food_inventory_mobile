@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_inventory_mobile/screens/coffee_page.dart';
 import 'package:food_inventory_mobile/screens/menu.dart';
 import 'package:food_inventory_mobile/screens/coffee_form.dart';
+import 'package:food_inventory_mobile/screens/list_item.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -18,7 +19,7 @@ class LeftDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Coffee Navigator',
+                  'Item Navigator',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -62,18 +63,29 @@ class LeftDrawer extends StatelessWidget {
               ));
             },
           ),
+          // ListTile(
+          //   leading: const Icon(Icons.coffee),
+          //   title: const Text('Lihat Item'),
+          //   // Bagian redirection ke lihat item
+          //   onTap: () {
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //           builder: (context) => CoffeeListPage(items: items),
+          //         ));
+          //   },
+          // ),
           ListTile(
-            leading: const Icon(Icons.coffee),
+            leading: const Icon(Icons.shopping_basket),
             title: const Text('Lihat Item'),
-            // Bagian redirection ke lihat item
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CoffeeListPage(items: items),
-                  ));
+                // Route menu ke halaman produk
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductPage()),
+                );
             },
-          ),
+        ),
         ],
       ),
     );

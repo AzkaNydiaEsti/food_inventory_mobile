@@ -11,6 +11,7 @@
 
 - [Tugas 7](#tugas-7-checklist)
 - [Tugas 8](#tugas-8-checklist)
+- [Tugas 9](#tugas-9-checklist)
 
 ---
 
@@ -383,3 +384,43 @@ Checklist untuk tugas ini adalah sebagai berikut:<br>
 <br>
 Referensi : <br>
 - https://medium.com/ruangguru/an-introduction-to-flutter-clean-architecture-ae00154001b0
+
+---
+
+# Tugas 9 Checklist
+
+Checklist untuk tugas ini adalah sebagai berikut:<br>
+<br>
+- [x] Memastikan deployment proyek tugas Django kamu telah berjalan dengan baik.
+- [x] Membuat halaman login pada proyek tugas Flutter.
+- [x] Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.
+- [x] Membuat model kustom sesuai dengan proyek aplikasi Django.
+- [x] Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah kamu deploy.
+    - [x] Tampilkan name, amount, dan description dari masing-masing item pada halaman ini.
+- [x] Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.
+    - [x] Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
+    - [x] Tampilkan seluruh atribut pada model item kamu pada halaman ini.
+    - [x] Tambahkan tombol untuk kembali ke halaman daftar item.
+- [x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
+    1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+        Bisa, kita dapat mengakalinya dengan menggunakan sebuah variabel yang menyimpan sebuah dictionary berisi data. Tetapi, hal tersebut akan mempersulit kita dibandingkan menggunakan model yang dapat membantu memastikan suatu objek memiliki semua nilai atribut pada kelas di model.
+        <br>
+
+    2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+        CookieRequest dipakai untuk membantu aplikasi menyimpan sesi secara lokal dan melakukan request HTTP. Pengunaannya pada flutter adalah supaya perubahan status login/sesi yang terjadi menjadi konsisten di semua aplikasi.
+        <br>
+
+    3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+        Pada tugas ini, saya menggunakan website quicktype untuk membuat data JSO dari endpoint /json pada tugas django. Lalu, saya menambahkan dependensi http pada flutter dan memberi permision pada file xml di main folder android supaya dapat mengakses internet. 
+        ``` <uses-permission android:name="android.permission.INTERNET" /> ```
+        Setelah itu, saya melakukan fetch data dar
+        <br>
+    
+    4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+    
+    5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+    
+    6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+    
+- [x] Melakukan add-commit-push ke GitHub.

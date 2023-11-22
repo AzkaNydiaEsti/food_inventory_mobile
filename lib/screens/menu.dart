@@ -16,7 +16,7 @@ class MyHomePage extends StatelessWidget {
         return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Esti Coffee House',
+          'Esti Item House',
         ),
         backgroundColor:  const Color.fromARGB(255, 189, 154, 122),
         foregroundColor: Colors.white,
@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
                 child: Text(
-                  'COFFEE INVENTORY', // Text yang menandakan toko
+                  'ITEM INVENTORY', // Text yang menandakan toko
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
